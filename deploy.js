@@ -26,7 +26,7 @@ const compress = async (path, name, deployPath) => {
 if (import.meta.main) {
   const [name, path, deploy] = Deno.args;
   console.log("begin deployment");
-  const deployTo = Deno.env.get("deploy") ? Deno.env.get("deploy") : deploy;
+  const deployTo = `${Deno.env.get("deploy") ? Deno.env.get("deploy") : deploy}?name=${name}`;
   await compress(path, name, deployTo);
   console.log("deployment done");
 }
