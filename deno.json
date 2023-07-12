@@ -1,0 +1,6 @@
+{
+    "tasks": {
+        "build" : "deno compile -A deploy.js"
+    },
+    "lock": false
+}
