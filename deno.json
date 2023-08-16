@@ -1,6 +1,8 @@
 {
   "tasks": {
-    "build": "deno compile -A deploy.js"
+    "build": "deno compile -A deploy.js",
+    "server": "deno run -A test.js",
+    "test": "./deploy local_test ./local_test/src http://localhost:9001/deploy 0.0.1"
   },
   "lock": false
 }
