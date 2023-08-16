@@ -21,12 +21,13 @@ const compress = async (path, name, deployPath) => {
 
 /**
  * Deploy, to VM
- * deplpoy [name of app] [build directory] [vm host url]
+ * deplpoy [name of app] [build directory] [vm host url] [version]
  */
 if (import.meta.main) {
-  const [name, path, deploy] = Deno.args;
+  const [name, path, deploy, version] = Deno.args;
   console.log("begin deployment");
-  const deployTo = `${Deno.env.get("deploy") ? Deno.env.get("deploy") : deploy}?name=${name}`;
+  const versionQuery = version ? `&version=${version}` : '';
+  const deployTo = `${Deno.env.get("deploy") ? Deno.env.get("deploy") : deploy}?name=${name}${versionQuery}`;
   await compress(path, name, deployTo);
   console.log("deployment done");
 }
